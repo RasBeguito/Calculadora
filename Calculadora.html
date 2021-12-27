@@ -12,39 +12,56 @@
             <p id="Resultado"></p>
             <table>
                 <tr>
-                    <td><button>C</button></td>
-                    <td><button>&loarr;</button></td>
-                    <td><button>/</button></td>
-                    <td><button>*</button></td>
+                    <td><button onclick="clean()">C</button></td>
+                    <td><button onclick="del()">&loarr;</button></td>
+                    <td><button onclick="insert ('/')">/</button></td>
+                    <td><button onclick="insert ('*')">*</button></td>
                 </tr>
                 <tr>
                     <td><button onclick="insert ('7')">7</button></td>
                     <td><button onclick="insert ('8')">8</button></td>
                     <td><button onclick="insert ('9')">9</button></td>
-                    <td><button>-</button></td>
+                    <td><button onclick="insert ('-')">-</button></td>
                 </tr>
                 <tr>
                     <td><button onclick="insert ('4')">4</button></td>
                     <td><button onclick="insert ('5')">5</button></td>
                     <td><button onclick="insert ('6')">6</button></td>
-                    <td><button>+</button></td>
+                    <td><button onclick="insert ('+')">+</button></td>
                 </tr>
                 <tr>
                     <td><button onclick="insert ('1')">1</button></td>
                     <td><button onclick="insert ('2')">2</button></td>
                     <td><button onclick="insert ('3')">3</button></td>
-                    <td rowspan="2"><button id="ButtonE">=</button></td>
+                    <td rowspan="2"><button id="ButtonE" onclick="calcular()">=</button></td>
                 </tr>
                 <tr>
                     <td colspan="2"><button id="Button0"  onclick="insert ('0')">0</button></td>
-                    <td><button>,</button></td>
+                    <td><button onclick="insert (',')">,</buttonid=></td>
                 </tr>
             </table>
         </main>
     </div>
     <script>
         function insert(num) {
-            document.getElementById('Resultado').innerHTML=num;
+            var numero = document.getElementById('Resultado').innerHTML;
+            document.getElementById('Resultado').innerHTML = numero + num;
+        }
+        function clean() {
+            document.getElementById('Resultado').innerHTML = "";
+        }
+        function del() {
+            var resultado = document.getElementById('Resultado').innerHTML;
+            document.getElementById('Resultado').innerHTML = resultado.substring(0, resultado.length -1);
+        }
+        function calcular() {
+            var resultado = document.getElementById('Resultado').innerHTML;
+            if(resultado) {
+                document.getElementById('Resultado').innerHTML = eval(resultado);
+            }
+            else {
+                document.getElementById('Resultado').innerHTML = '0'
+            }
         }
     </script>
 </body>
